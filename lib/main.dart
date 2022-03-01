@@ -29,6 +29,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   var favoriteStar = false;
+  var favoriteHeart = false;
 
   @override
   Widget build(BuildContext context) {
@@ -94,7 +95,10 @@ class _HomePageState extends State<HomePage> {
                     child: Image(
                       image: Song().albumCover,
                       fit: BoxFit.cover,
-                      width: MediaQuery.of(context).size.width * .8,
+                      width: MediaQuery
+                          .of(context)
+                          .size
+                          .width * .8,
                     ),
                   ),
                 ],
@@ -110,11 +114,93 @@ class _HomePageState extends State<HomePage> {
                           Text(
                             Song().title,
                             style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 25.0,
+                              color: Colors.white,
+                              fontSize: 25.0,
+                            ),
+                          ),
+                          IconButton(
+                            icon: Icon(
+                              favoriteHeart
+                                  ? Icons.favorite
+                                  : Icons.favorite_border,
+                              color: Colors.white,
+                            ),
+                            onPressed: () {
+                              setState(() {
+                                if (favoriteHeart) {
+                                  favoriteHeart = false;
+                                } else {
+                                  favoriteHeart = true;
+                                }
+                              });
+                            },
+                          ),
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          Text(
+                            Song().singerName,
+                            style: const TextStyle(
+                              color: Color(0xFF16CFDE),
+                              fontSize: 16.0,
                             ),
                           ),
                         ],
+                      ),
+                      const SizedBox(
+                        height: 30.0,
+                      ),
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(5.0),
+                        child: const LinearProgressIndicator(
+                          backgroundColor: Colors.grey,
+                          valueColor:
+                          AlwaysStoppedAnimation<Color>(Color(0xFF25D0DE)),
+                          value: .4,
+                          minHeight: 10.0,
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 10.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: const [
+                            Text(
+                              "1:24",
+                              style: TextStyle(color: Colors.black38),
+                            ),
+                            Text(
+                              "3:47",
+                              style: TextStyle(color: Colors.black38),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          IconButton(
+                            onPressed: () {},
+                            icon: Icon(Icons.arrow_back_ios_outlined),
+                            color: Colors.white,
+                          ),
+                          IconButton(
+                            iconSize: 70.0,
+                            onPressed: () {},
+                            icon: Icon(Icons.play_arrow_rounded),
+                            color: Colors.white,
+                          ),
+                          IconButton(
+                            onPressed: () {},
+                            icon: Icon(Icons.arrow_forward_ios_outlined),
+                            color: Colors.white,
+                          ),
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 50.0,
                       ),
                     ],
                   ),
