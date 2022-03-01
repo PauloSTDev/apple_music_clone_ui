@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: HomePage(),
+      home: const HomePage(),
     );
   }
 }
@@ -104,106 +104,104 @@ class _HomePageState extends State<HomePage> {
                 ],
               ),
               Expanded(
-                child: Container(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      Row(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          Song().title,
+                          style: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 25.0,
+                          ),
+                        ),
+                        IconButton(
+                          icon: Icon(
+                            favoriteHeart
+                                ? Icons.favorite
+                                : Icons.favorite_border,
+                            color: Colors.white,
+                          ),
+                          onPressed: () {
+                            setState(() {
+                              if (favoriteHeart) {
+                                favoriteHeart = false;
+                              } else {
+                                favoriteHeart = true;
+                              }
+                            });
+                          },
+                        ),
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        Text(
+                          Song().singerName,
+                          style: const TextStyle(
+                            color: Color(0xFF16CFDE),
+                            fontSize: 16.0,
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(
+                      height: 30.0,
+                    ),
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(5.0),
+                      child: const LinearProgressIndicator(
+                        backgroundColor: Colors.grey,
+                        valueColor:
+                        AlwaysStoppedAnimation<Color>(Color(0xFF25D0DE)),
+                        value: .4,
+                        minHeight: 10.0,
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 10.0),
+                      child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
+                        children: const [
                           Text(
-                            Song().title,
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 25.0,
-                            ),
+                            "1:24",
+                            style: TextStyle(color: Colors.black38),
                           ),
-                          IconButton(
-                            icon: Icon(
-                              favoriteHeart
-                                  ? Icons.favorite
-                                  : Icons.favorite_border,
-                              color: Colors.white,
-                            ),
-                            onPressed: () {
-                              setState(() {
-                                if (favoriteHeart) {
-                                  favoriteHeart = false;
-                                } else {
-                                  favoriteHeart = true;
-                                }
-                              });
-                            },
-                          ),
-                        ],
-                      ),
-                      Row(
-                        children: [
                           Text(
-                            Song().singerName,
-                            style: const TextStyle(
-                              color: Color(0xFF16CFDE),
-                              fontSize: 16.0,
-                            ),
+                            "3:47",
+                            style: TextStyle(color: Colors.black38),
                           ),
                         ],
                       ),
-                      const SizedBox(
-                        height: 30.0,
-                      ),
-                      ClipRRect(
-                        borderRadius: BorderRadius.circular(5.0),
-                        child: const LinearProgressIndicator(
-                          backgroundColor: Colors.grey,
-                          valueColor:
-                          AlwaysStoppedAnimation<Color>(Color(0xFF25D0DE)),
-                          value: .4,
-                          minHeight: 10.0,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        IconButton(
+                          onPressed: () {},
+                          icon: const Icon(Icons.arrow_back_ios_outlined),
+                          color: Colors.white,
                         ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 10.0),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: const [
-                            Text(
-                              "1:24",
-                              style: TextStyle(color: Colors.black38),
-                            ),
-                            Text(
-                              "3:47",
-                              style: TextStyle(color: Colors.black38),
-                            ),
-                          ],
+                        IconButton(
+                          iconSize: 70.0,
+                          onPressed: () {},
+                          icon: const Icon(Icons.play_arrow_rounded),
+                          color: Colors.white,
                         ),
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          IconButton(
-                            onPressed: () {},
-                            icon: Icon(Icons.arrow_back_ios_outlined),
-                            color: Colors.white,
-                          ),
-                          IconButton(
-                            iconSize: 70.0,
-                            onPressed: () {},
-                            icon: Icon(Icons.play_arrow_rounded),
-                            color: Colors.white,
-                          ),
-                          IconButton(
-                            onPressed: () {},
-                            icon: Icon(Icons.arrow_forward_ios_outlined),
-                            color: Colors.white,
-                          ),
-                        ],
-                      ),
-                      const SizedBox(
-                        height: 50.0,
-                      ),
-                    ],
-                  ),
+                        IconButton(
+                          onPressed: () {},
+                          icon: const Icon(Icons.arrow_forward_ios_outlined),
+                          color: Colors.white,
+                        ),
+                      ],
+                    ),
+                    const SizedBox(
+                      height: 50.0,
+                    ),
+                  ],
                 ),
               ),
             ],
