@@ -36,7 +36,7 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         flexibleSpace: Container(
           decoration: const BoxDecoration(
-            gradient:  LinearGradient(
+            gradient: LinearGradient(
               colors: [
                 Color(0xFF3AA575),
                 Color(0xFF4CD4A9),
@@ -53,8 +53,8 @@ class _HomePageState extends State<HomePage> {
         ),
         actions: [
           IconButton(
-              onPressed: () {},
-              icon: const Icon(Icons.share),
+            onPressed: () {},
+            icon: const Icon(Icons.share),
           ),
           IconButton(
             icon: Icon(favoriteStar ? Icons.star : Icons.star_border),
@@ -72,7 +72,7 @@ class _HomePageState extends State<HomePage> {
       ),
       body: Container(
         decoration: const BoxDecoration(
-          gradient:  LinearGradient(
+          gradient: LinearGradient(
             colors: [
               Color(0xFF3AA575),
               Color(0xFF4CD4A9),
@@ -83,15 +83,42 @@ class _HomePageState extends State<HomePage> {
           padding: const EdgeInsets.symmetric(horizontal: 40.0),
           child: Column(
             children: [
+              const SizedBox(
+                height: 30.0,
+              ),
               Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   ClipRRect(
                     borderRadius: BorderRadius.circular(25.0),
                     child: Image(
                       image: Song().albumCover,
+                      fit: BoxFit.cover,
+                      width: MediaQuery.of(context).size.width * .8,
                     ),
-                  )
+                  ),
                 ],
+              ),
+              Expanded(
+                child: Container(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            Song().title,
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 25.0,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
               ),
             ],
           ),
@@ -101,10 +128,8 @@ class _HomePageState extends State<HomePage> {
   }
 }
 
-
 class Song {
   String title = "Circles";
   String singerName = "Post Malone";
-
-  AssetImage albumCover = AssetImage("assets/cover.png";)
+  AssetImage albumCover = const AssetImage("assets/cover.jpg");
 }
